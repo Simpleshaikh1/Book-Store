@@ -115,7 +115,7 @@ You can deploy this project:
 
 - GitHub: [@githubhandle](https://github.com/simpleshaikh1)
 - Twitter: [@twitterhandle](https://twitter.com/simpleshaikh)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/Toyyib-Abayomi)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/toyyib-abayomi-0822b91a6/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
