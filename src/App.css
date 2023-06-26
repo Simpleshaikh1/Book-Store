@@ -81,6 +81,7 @@ nav ul li a {
 select {
   height: 50px;
   width: 50%;
+  padding: 2%;
   border: 1px solid #eaeaea;
 }
 
