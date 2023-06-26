@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const Book = ({ book }) => {
   return (
-    <div>
+    <div >
       <div className="left-side">
         <div className="bookDetails">
           <h5>{book.genre}</h5>
