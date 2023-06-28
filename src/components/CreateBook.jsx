@@ -1,8 +1,23 @@
 import { useState } from "react";
+import { addBooks } from "../redux/books/BookSlice";
+import { useDispatch } from "react-redux";
 
 const CreateBook = () => {
+  const dispatch = useDispatch();
   const [ title, setTitle ] = useState("");
   const [ author, setAuthor ] = useState("");
+
+
+  const submit = (e) => {
+    e.preventDefault();
+    if(title || author){
+      dispatch(addBooks([title, author]));
+      setTitle("");
+      setAuthor("");
+    }else{
+      return;
+    }
+  }
 
   return(
     <div className="container">
@@ -18,7 +33,7 @@ const CreateBook = () => {
            placeholder="Book author"
            onChange={(e) => setAuthor(e.target.value)} 
            />
-           <button className="addBookBtn" type="submit">
+           <button className="addBookBtn" type="submit" onClick={submit}>
               ADD BOOK
            </button>
         </form>

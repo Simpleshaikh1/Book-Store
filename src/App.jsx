@@ -1,19 +1,24 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom';
-import BookList from './components/BookList';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import Navbar from './components/Navbar';
 import Categories from './routes/Categories';
 import ErrorPage from './routes/Error';
+import Home from './routes/Home';
 
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Navbar />} />
-        <Route index element={<BookList />} />
+    <Provider store={store}>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {/* <Route index element={<BookList />} /> */}
         <Route path="/categories" element={<Categories />} />
         <Route path="*" element={<ErrorPage />} />
-    </Routes>
+      </Routes>
+    </Provider>
   );
 }
 

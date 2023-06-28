@@ -1,10 +1,15 @@
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { removeBooks } from "../redux/books/BookSlice";
+import Button from "./Btn";
 
 const Book = ({ book }) => {
+  const dispatch = useDispatch()
+
   return (
-    <div >
+    <div className="book-container">
       <div className="left-side">
         <div className="bookDetails">
           <h5>{book.genre}</h5>
@@ -13,14 +18,15 @@ const Book = ({ book }) => {
         </div>
         <div className="commentPart">
           <button type="button">Comments</button>|
-          <button type="button">Remove</button>
+          <Button type="button"
+          onClick={() => {dispatch(removeBooks(book.id))}}>Remove</Button>
           |<button type="button">Edit</button>
         </div>
       </div>
 
       <div className="progressBar">
         <CircularProgressbar
-          value={parseInt(book.completed, 10)}
+          value={parseInt(book.completed, 30)}
           text={`${book.completed}`}
         />
       </div>
@@ -42,8 +48,8 @@ Book.propTypes = {
       genre: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       author: PropTypes.string.isRequired,
-      chapter: PropTypes.string.isRequired,
       completed: PropTypes.string.isRequired,
+      chapter: PropTypes.string.isRequired,
     }).isRequired,
 };
 
