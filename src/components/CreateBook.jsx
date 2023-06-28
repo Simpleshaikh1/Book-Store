@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { addBooks } from "../redux/books/BookSlice";
+import  addBook  from "../redux/books/BookSlice";
+import  getBook  from "../redux/books/BookSlice";
 import { useDispatch } from "react-redux";
 
 const CreateBook = () => {
@@ -8,14 +9,16 @@ const CreateBook = () => {
   const [ author, setAuthor ] = useState("");
 
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
-    if(title || author){
-      dispatch(addBooks([title, author]));
+    if(title || author)return;
+    try{
+      await dispatch(addBook([title, author]));
       setTitle("");
       setAuthor("");
-    }else{
-      return;
+      await dispatch(getBook());
+    }catch(err) {
+      return err
     }
   }
 
