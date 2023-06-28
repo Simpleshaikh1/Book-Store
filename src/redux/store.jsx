@@ -3,8 +3,10 @@ import categoriesSlice from "./categories/categoriesSlice";
 import BookSlice from "./books/BookSlice";
 
 const store = configureStore({
-    bookStore:BookSlice,
-    category: categoriesSlice,
+    reducer: {
+      bookStore:BookSlice,
+      category: categoriesSlice,
+    },
 });
 
 export default store;
