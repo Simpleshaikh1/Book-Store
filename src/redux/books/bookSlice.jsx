@@ -14,26 +14,26 @@ const deleteUrl = "https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bo
 export const getBook = createAsyncThunk("books/getBooks", async (api) => {
     try {
         const res = await axios(getUrl)
-        return [...res.data]
+        return res.data
     } catch (error) {
         return api.rejectWithValue("error fetching data")
     }
 });
 
-export const addBook = createAsyncThunk(
+ const addBook = createAsyncThunk(
     "books/addbook",
     async (book, api) =>{
        const bookHash =  {
             id:uuidv4,
             title:book[0],
             author:book[1],
-            category:'actions',
+            category:'Action',
         };
 
         try {
              const res = await axios.post(addUrl, bookHash);
              api.dispatch(getBook());
-             return [...res.data]
+             return res.data
         } catch (error) {
             return api.rejectWithValue('error fetching data')
         }
@@ -43,7 +43,7 @@ export const addBook = createAsyncThunk(
 export const deleteBook = createAsyncThunk('books/deleteBook', async (id, api) => {
     try {
         const res = await axios.delete(`${deleteUrl}/${id}`);
-        return [...res.data]
+        return res.data
     } catch (error) {
         return api.rejectWithValue('error connecting to api')
     }
@@ -52,7 +52,7 @@ export const deleteBook = createAsyncThunk('books/deleteBook', async (id, api) =
 
 
 const bookSlice = createSlice({
-    name:'books',
+    name:'bookStore',
     initialState,
     extraReducers: (builder) => {
         builder 
