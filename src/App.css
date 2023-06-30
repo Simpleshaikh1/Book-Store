@@ -67,6 +67,9 @@ nav ul {
 
 nav ul li {
   list-style: none;
+  text-decoration: none;
+  font-size: 20px;
+  color: #7b7b7b;
 }
 
 .navRight {
