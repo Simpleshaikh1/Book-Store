@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route index element={<BookList />} />
-        {/* <Route path="/categories" element={<Categories />} /> */}
+        <Route path="/categories" element={<Categories />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </Provider>
