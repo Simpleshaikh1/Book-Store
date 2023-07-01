@@ -1,0 +1,199 @@
+#root {
+  width: 100%;
+  max-height: 100vh;
+  background-color: #fafafab7;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.book-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 4rem;
+  width: 90%;
+  padding: 1%;
+  margin-bottom: 1rem;
+  background-color: white;
+  border: 1px solid rgb(221, 229, 224);
+}
+
+.left-side {
+  display: block;
+  margin-right: 10rem;
+  width: 60vw;
+  text-align: left;
+}
+
+.genre {
+  color: #bdb4b4;
+  font-size: smaller;
+}
+
+.commentPart {
+  padding-top: 4%;
+  padding-bottom: 5%;
+  padding-left: 2%;
+}
+
+.navbar {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 4% 8%;
+  height: 60px;
+}
+
+.navbar h1 {
+  font-size: 48px;
+  line-height: 2em;
+  font-weight: 700;
+  color: #496e93;
+}
+
+.navLeft {
+  align-items: center;
+  display: flex;
+  gap: 70px;
+}
+
+nav ul {
+  display: flex;
+  gap: 40px;
+}
+
+nav ul li {
+  list-style: none;
+  font-size: 20px;
+  color: #7b7b7b;
+}
+
+.lis {
+  text-decoration: none;
+}
+
+.navRight {
+  display: flex;
+  font-size: 40px;
+  color: #628ebb;
+  align-items: center;
+}
+
+nav ul li a {
+  font-size: 20px;
+  color: #121212;
+  list-style: none;
+}
+
+.navLeft h1 {
+  margin-left: -3rem;
+  color: #0290ff;
+}
+
+.container {
+  padding: 4% 8%;
+  width: 105vw;
+  margin-left: -3rem;
+}
+
+.container h1 {
+  color: hsl(0, 0%, 53%);
+  margin-bottom: 1rem;
+}
+
+.addBookBtn {
+  padding: 1% 1%;
+  width: 20%;
+  background-color: #077283;
+  height: 50px;
+  color: #fff;
+  border: none;
+}
+
+.form {
+  display: flex;
+  gap: 40px;
+}
+
+.form input,
+select {
+  height: 50px;
+  width: 50%;
+  padding: 1%;
+}
+
+.form select {
+  padding: 0 2% 0 2%;
+  color: #7b7b7b;
+  height: 50px;
+  width: 50%;
+}
+
+.progressBar {
+  width: 30vw;
+  margin-right: 10rem;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.complet {
+  color: #bdb4b4;
+}
+
+.perc {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.bookRight {
+  width: 40vw;
+}
+
+.title {
+  text-align: left;
+}
+
+.author {
+  color: rgb(169, 223, 240);
+}
+
+.span {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.progress {
+  margin-top: 2rem;
+  background-color: #0290ff;
+  color: white;
+  padding: 4px 1rem;
+  border-radius: 5%;
+  border: none;
+}
+
+.commentPart button {
+  border: none;
+  outline: none;
+  background: white;
+  cursor: pointer;
+  color: #43a6bf;
+}
+
+.current {
+  color: hsl(0, 0%, 53%);
+  margin-bottom: 2px;
+}
