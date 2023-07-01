@@ -6,7 +6,6 @@ import Navbar from './components/Navbar';
 import Categories from './routes/Categories';
 import ErrorPage from './routes/Error';
 import Home from './routes/Home';
-import BookList from './components/BookList';
 
 
 function App() {
@@ -16,7 +15,6 @@ function App() {
       
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route index element={<BookList />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>

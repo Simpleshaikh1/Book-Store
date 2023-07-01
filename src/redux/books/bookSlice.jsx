@@ -7,24 +7,26 @@ const initialState = {
     isLoading: true,
 }
 
+// xqDpmLzvPxikb9A9LRQw
+
 const getUrl =  "https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xqDpmLzvPxikb9A9LRQw/books";
 const addUrl = "https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xqDpmLzvPxikb9A9LRQw/books";
 const deleteUrl = "https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xqDpmLzvPxikb9A9LRQw/books";
 
 export const getBook = createAsyncThunk("books/getBooks", async (api) => {
     try {
-        const res = await axios(getUrl)
+        const res = await axios.get(getUrl)
         return res.data
     } catch (error) {
         return api.rejectWithValue("error fetching data")
     }
 });
 
- const addBook = createAsyncThunk(
+export const addBook = createAsyncThunk(
     "books/addbook",
     async (book, api) =>{
        const bookHash =  {
-            id:uuidv4,
+            item_id:uuidv4(),
             title:book[0],
             author:book[1],
             category:'Action',
@@ -40,9 +42,9 @@ export const getBook = createAsyncThunk("books/getBooks", async (api) => {
     }
 );
 
-export const deleteBook = createAsyncThunk('books/deleteBook', async (id, api) => {
+export const deleteBook = createAsyncThunk('books/deleteBook', async (item_id, api) => {
     try {
-        const res = await axios.delete(`${deleteUrl}/${id}`);
+        const res = await axios.delete(`${deleteUrl}/${item_id}`);
         return res.data
     } catch (error) {
         return api.rejectWithValue('error connecting to api')
@@ -56,21 +58,12 @@ const bookSlice = createSlice({
     initialState,
     extraReducers: (builder) => {
         builder 
-            .addCase(getBook.pending, state => state.isLoading = true)
             .addCase(getBook.fulfilled, (state, action) => {
                 state.isLoading= false;
                 state.books = action.payload;
             })
-            .addCase(getBook.rejected, state => state.isLoading = false)
-            .addCase(addBook.pending, state => state.isLoading = false)
-            .addCase(addBook.fulfilled, state => state.isLoading = true)
-            .addCase(addBook.rejected, state => state.isLoading = false)
-            .addCase(deleteBook.pending, state => state.isLoading = true)
-            .addCase(deleteBook.fulfilled, state => state.isLoading = true)
-            .addCase(deleteBook.rejected, state => state.isLoading = false)
-
     },
 });
 
 
-export default  bookSlice.reducer;  
+export default bookSlice.reducer;  

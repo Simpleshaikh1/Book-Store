@@ -1,22 +1,21 @@
 import { useEffect } from "react";
-
 import CreateBook from "./CreateBook";
 import Book from './Book'
 import { useSelector, useDispatch } from "react-redux";
-import getBook from "../redux/books/BookSlice";
+import {getBook} from "../redux/books/BookSlice";
 
 
 const BookList = () => {
   const dispatch = useDispatch();
 
-  const { books, isLoading } = useSelector((store) => store.bookStore);
+  const { books, isLoading} = useSelector((store) => store.bookStore);
 
     useEffect(() => {
-      dispatch(getBook);
+      dispatch(getBook());
     },[dispatch]);
 
     const arrOfBooks = Object.entries(books).reduce((e, [id, bookList]) => {
-      const bookId = bookList.map((i) => ({...i, id}) );
+      const bookId = bookList.map((book) => ({...book, id}) );
       return [...e, ...bookId]
     }, [])
 
@@ -33,7 +32,7 @@ const BookList = () => {
               <CreateBook />
           </>
         )
-      }
+      } 
        
       </div>
     );
