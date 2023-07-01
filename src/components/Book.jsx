@@ -8,6 +8,12 @@ import Button from "./Btn";
 const Book = ({ book }) => {
   const dispatch = useDispatch()
 
+  const boook = {
+    completed:10,
+    percentage:10,
+    action:"Action"
+  }
+
   const sDeleteBook = async () => {
     try {
       await dispatch(deleteBook(book.id))
@@ -21,8 +27,8 @@ const Book = ({ book }) => {
     <div className="book-container">
       <div className="left-side">
         <div className="bookDetails">
+          <h3 className="genre">{boook.action}</h3>
           <h2 className="title">{book.title}</h2>
-          <h3 className="genre">{book.genre}</h3>
           <p className="author">{book.author}</p>
         </div>
         <div className="commentPart">
@@ -36,14 +42,17 @@ const Book = ({ book }) => {
 
       <div className="progressBar">
         <CircularProgressbar
-          value={parseInt(book.completed, 30)}
-          text={`${book.completed}`}
+          value={parseInt(boook.completed, 30)}
         />
+        <div className="perc">
+          <span>{boook.percentage}%</span>
+          <span className="complet">completed</span>
+        </div>
       </div>
 
       <div className="bookRight">
         <h4 className="current">Current Chapter</h4>
-        <p className="chapter">{book.chapter}</p>
+        <p className="chapter">Chapters </p>
         <button type="button" className="progress">UPDATE PROGRESS</button>
       </div>
 

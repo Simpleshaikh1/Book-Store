@@ -7,12 +7,12 @@ const Navbar = () => {
         <div className="navLeft">
           <h1>Bookstore CMS</h1>
           <nav>
-            <ul>
+            <ul className="ul">
               <li className=".link">
-                <Link to={'/'}>Books</Link>
+                <Link to={'/'} className="lis">Books</Link>
               </li>
               <li className=".link">
-                <Link to={'categories'}>Categories</Link>
+                <Link to={'categories'} className="lis">Categories</Link>
               </li>
             </ul>
           </nav>

@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2023 Toyyib Bolaji
+Copyright (c) 2023 Toyyib Bolaji Bello
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

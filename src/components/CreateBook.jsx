@@ -31,6 +31,7 @@ const CreateBook = () => {
            onChange={(e) => setTitle(e.target.value)} 
           />
           <input type="text"
+          className="input-right"
            title={author}
            placeholder="Book author"
            onChange={(e) => setAuthor(e.target.value)} 
