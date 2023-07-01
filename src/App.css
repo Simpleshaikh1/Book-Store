@@ -109,7 +109,7 @@ nav ul li a {
 }
 
 .container h1 {
-  color: #888888;
+  color: hsl(0, 0%, 53%);
   margin-bottom: 1rem;
 }
 
