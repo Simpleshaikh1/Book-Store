@@ -43,7 +43,6 @@ const Book = ({ book }) => {
       <div className="progressBar">
         <CircularProgressbar
           value={parseInt(boook.completed, 30)}
-          // text={`${boook.completed}`}
         />
         <div className="perc">
           <span>{boook.percentage}%</span>
