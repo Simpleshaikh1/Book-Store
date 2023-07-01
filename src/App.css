@@ -1,7 +1,7 @@
 #root {
   width: 100%;
   max-height: 100vh;
-  background-color: #fafafa;
+  background-color: #fafafab7;
   display: flex;
   flex-direction: column;
   gap: 80px;
@@ -17,25 +17,27 @@
 
 .book-container {
   display: flex;
-  padding: 3%;
-  gap: 30%;
-  border: 1px solid blue;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 4rem;
+  width: 90%;
+  padding: 1%;
+  margin-bottom: 1rem;
+  background-color: white;
+  border: 1px solid rgb(221, 229, 224);
 }
 
 .left-side {
   display: block;
-  width: 50%;
-  border: 1px solid blue;
+  margin-right: 30rem;
+  width: 60rem;
+  text-align: left;
 }
 
 .commentPart {
-  padding-top: 12%;
+  padding-top: 4%;
   padding-bottom: 5%;
   padding-left: 5%;
-}
-
-.bookDetails {
-  padding: 5%;
 }
 
 .navbar {
@@ -67,6 +69,9 @@ nav ul {
 
 nav ul li {
   list-style: none;
+  text-decoration: none;
+  font-size: 20px;
+  color: #7b7b7b;
 }
 
 .navRight {
@@ -84,7 +89,6 @@ nav ul li a {
 
 .container {
   padding: 4% 8%;
-  border-top: 1px solid #af5959;
 }
 
 .addBookBtn {
@@ -105,7 +109,6 @@ select {
   height: 50px;
   width: 50%;
   padding: 2%;
-  border: 1px solid #eaeaea;
 }
 
 .form select {
@@ -113,9 +116,34 @@ select {
   color: #7b7b7b;
   height: 50px;
   width: 30%;
-  border: 1px solid #eaeaea;
 }
 
 .progressBar {
-  width: 10%;
+  width: 20%;
+  margin-right: 15rem;
+  padding-top: 20px;
+}
+
+.bookRight {
+  width: 40rem;
+}
+
+.title {
+  text-align: left;
+}
+
+.author {
+  color: green;
+}
+
+.span {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.progress {
+  margin-top: 2rem;
+  background-color: green;
+  padding: 5px;
+  color: white;
 }

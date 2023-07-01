@@ -12,9 +12,9 @@ function App() {
   return (
     <Provider store={store}>
       <Navbar />
+      
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route index element={<BookList />} /> */}
         <Route path="/categories" element={<Categories />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>

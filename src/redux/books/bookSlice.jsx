@@ -1,78 +1,69 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
-
-const storedBooks = () => {
-    const storedBooks = localStorage.getItem('data');
-    const arrBooks = JSON.parse(storedBooks);
-
-    const bookStorage = [
-        {
-           id: uuidv4(),
-           genre: "Action",
-           title: "The Hunger Games",
-           author: "Suzanne Collins",
-           completed: "64%",
-           chapter: "Chapter 17",
-        },
-        {
-            id: uuidv4(),
-            genre: "Action",
-            title: "Dune",
-            author: "Frank Herbert",
-            completed: "8%",
-            chapter: "Chapter 3: 'Alesson learned'",
-        },
-        {
-            id: uuidv4(),
-            genre: "Action",
-            title: "Capital in The Twenty-First Century",
-            author: "Suzanne Collins",
-            completed: "0%",
-            chapter: "Introduction",
-        },
-    ];
-    
-    if(storedBooks) {
-        if(arrBooks.length !== 0) {
-            return arrBooks;
-        }
-        return bookStorage;
-    }
-
-    return bookStorage;
-};
+import axios from 'axios'
 
 const initialState = {
-    books: storedBooks(),
+    books: [],
+    isLoading: true,
 }
 
+// xqDpmLzvPxikb9A9LRQw
+
+const getUrl =  "https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xqDpmLzvPxikb9A9LRQw/books";
+const addUrl = "https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xqDpmLzvPxikb9A9LRQw/books";
+const deleteUrl = "https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/xqDpmLzvPxikb9A9LRQw/books";
+
+export const getBook = createAsyncThunk("books/getBooks", async (api) => {
+    try {
+        const res = await axios.get(getUrl)
+        return res.data
+    } catch (error) {
+        return api.rejectWithValue("error fetching data")
+    }
+});
+
+export const addBook = createAsyncThunk(
+    "books/addbook",
+    async (book, api) =>{
+       const bookHash =  {
+            item_id:uuidv4(),
+            title:book[0],
+            author:book[1],
+            category:'Action',
+        };
+
+        try {
+             const res = await axios.post(addUrl, bookHash);
+             api.dispatch(getBook());
+             return res.data
+        } catch (error) {
+            return api.rejectWithValue('error fetching data')
+        }
+    }
+);
+
+export const deleteBook = createAsyncThunk('books/deleteBook', async (item_id, api) => {
+    try {
+        const res = await axios.delete(`${deleteUrl}/${item_id}`);
+        return res.data
+    } catch (error) {
+        return api.rejectWithValue('error connecting to api')
+    }
+})
+
+
+
 const bookSlice = createSlice({
-    name:'books',
+    name:'bookStore',
     initialState,
-    reducers: {
-        removeBooks: (state, action) => {
-            const bookId = action.payload
-            state.books = state.books.filter((book) => book.id !== bookId)
-        },
-
-        addBooks: (state, action) => {
-            const title = action.payload[0];
-            const author = action.payload[1];
-            const book = {
-                id: uuidv4(),
-                title:title,
-                author: author,
-                category: 'Actions',
-                genre: 'Action',
-                completed: '30%',
-                chapter:'90',
-            };
-
-            state.books = [...state.books, book];
-        },
+    extraReducers: (builder) => {
+        builder 
+            .addCase(getBook.fulfilled, (state, action) => {
+                state.isLoading= false;
+                state.books = action.payload;
+            })
     },
 });
 
-export const {removeBooks, addBooks} = bookSlice.actions;
 
-export default  bookSlice.reducer;  
+export default bookSlice.reducer;  

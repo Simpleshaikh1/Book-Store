@@ -2,25 +2,35 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { removeBooks } from "../redux/books/BookSlice";
+import {getBook, deleteBook} from "../redux/books/BookSlice";
 import Button from "./Btn";
 
 const Book = ({ book }) => {
   const dispatch = useDispatch()
 
+  const sDeleteBook = async () => {
+    try {
+      await dispatch(deleteBook(book.id))
+      await dispatch(getBook());
+    } catch (error) {
+      console.error(error)
+    }
+  };
+
   return (
     <div className="book-container">
       <div className="left-side">
         <div className="bookDetails">
-          <h5>{book.genre}</h5>
-          <h3>{book.title}</h3>
-          <p>{book.author}</p>
+          <h2 className="title">{book.title}</h2>
+          <h3 className="genre">{book.genre}</h3>
+          <p className="author">{book.author}</p>
         </div>
         <div className="commentPart">
-          <button type="button">Comments</button>|
-          <Button type="button"
-          onClick={() => {dispatch(removeBooks(book.id))}}>Remove</Button>
-          |<button type="button">Edit</button>
+          <button type="button" className="comment" id="comments">Comments</button><span className="span">|</span>
+         <Button type="button" id="comments"
+          onClick={() => {dispatch(sDeleteBook(book.id))}} 
+         >Remove</Button>
+          <span className="span">|</span><button type="button" className="edit" id="comments">Edit</button>
         </div>
       </div>
 
@@ -32,9 +42,9 @@ const Book = ({ book }) => {
       </div>
 
       <div className="bookRight">
-        <h4>Current Chapter</h4>
-        <p>{book.chapter}</p>
-        <button type="button">UPDATE PROGRESS</button>
+        <h4 className="current">Current Chapter</h4>
+        <p className="chapter">{book.chapter}</p>
+        <button type="button" className="progress">UPDATE PROGRESS</button>
       </div>
 
 
