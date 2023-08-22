@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  <h3><b>BookStore Web App</b></h3>
+  <h3><b>BookStore Web Application</b></h3>
 
 </div>
 
